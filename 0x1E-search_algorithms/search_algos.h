@@ -8,6 +8,9 @@
 int linear_search(int *array, size_t size, int value);
 
 /* 1-binary.c */
-int  binary_search(int *array, size_t size, int value);
+int binary_search(int *array, size_t size, int value);
+
+/* 100-jump.c */
+int jump_search(int *array, size_t size, int value);
 
 #endif
