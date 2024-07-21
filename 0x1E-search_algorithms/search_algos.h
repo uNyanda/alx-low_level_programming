@@ -4,6 +4,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * File contains prototypes and headers.
+*/
+
 /* 0-linear.c */
 int linear_search(int *array, size_t size, int value);
 
