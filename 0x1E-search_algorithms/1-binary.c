@@ -1,21 +1,43 @@
 #include "search_algos.h"
 
 /**
- * binary_search - function searches for a value in a sorted array of integers
- *                 using the Binary search algorithm
+ * print_array - Helper function to print the current subarray.
+ * @array: A pointer to the array to print.
+ * @start: right side of the array.
+ * @end: left side of the array.
+ */
+void print_array(int *array, size_t start, size_t end)
+{
+	size_t i;
+
+	printf("Searching in array: ");
+	for (i = start; i <= end; i++)
+	{
+		printf("%d", array[i]);
+		if (i < end)
+		{
+			printf(", ");
+		}
+	}
+	printf("\n");
+}
+
+/**
+ * binary_search - Searches for a value in a sorted array of integers using the
+ * Binary search algorithm.
+ * @array: A pointer to the first element of the array to search in.
+ * @size: The number of elements in array.
+ * @value: The value to search for.
  *
- * @array: pointer to the first element of the array to search in
- * @size: the number of elements in the array
- * @value: the value to search for.
- *
- * Return: index where value is located.
- *	   if value is not present or array is NULL, return -1.
+ * Return: -1 if value is not present in array or if array is NULL, otherwise
+ * the first index where value is located.
  */
 int binary_search(int *array, size_t size, int value)
 {
-	size_t left = 0, i;
-	size_t right = size - 1;
-	size_t mid;
+	size_t left, right, middle;
+
+	left = 0;
+	right = size - 1;
 
 	if (array == NULL || size == 0)
 	{
@@ -24,30 +46,21 @@ int binary_search(int *array, size_t size, int value)
 
 	while (left <= right)
 	{
-		mid = left + (right - left) / 2;
+		print_array(array, left, right);
 
-		printf("Searching in array: ");
-		for (i = left; i <= right; i++)
-		{
-			printf("%d", array[i]);
-			if (i < right)
-			{
-				printf(", ");
-			}
-		}
-		printf("\n");
+		middle = (right + left) / 2;
 
-		if (array[mid] == value)
+		if (array[middle] == value)
 		{
-			return (mid);
+			return (middle);
 		}
-		else if (array[mid] < value)
+		else if (value > array[middle])
 		{
-			left = mid + 1;
+			left = middle + 1;
 		}
-		else
+		else if (value < array[middle])
 		{
-			right = mid - 1;
+			right = middle - 1;
 		}
 	}
 	return (-1);
