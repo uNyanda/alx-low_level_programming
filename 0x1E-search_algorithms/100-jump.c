@@ -2,7 +2,7 @@
 #include <math.h>
 
 /**
- * jump_search - Searches f r a value in a sorted array of integers using
+ * jump_search - Searches for a value in a sorted array of integers using
  * Jump Search algorithm.
  * @array: A pointer to the first element of the array to search in.
  * @size: The number of elements in array.
@@ -23,7 +23,6 @@ int jump_search(int *array, size_t size, int value)
 	blocksize = sqrt(size);
 	start = 0;
 	end = 0;
-
 	while (end < size && array[end] < value)
 	{
 		printf("Value checked array[%lu] = [%d]\n", end, array[end]);
